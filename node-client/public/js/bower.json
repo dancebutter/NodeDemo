@@ -9,6 +9,7 @@
     "devDependencies" : {
         "angular" : "~1.4.0",
         "angular-ui-router": "~0.2.15",
-        "angular-bootstrap": "~0.13.0"
+        "angular-bootstrap": "~0.13.0",
+        "caman": "~4.0.0"
     }
 }
