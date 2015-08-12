@@ -1,0 +1,14 @@
+{
+    "name" : "node-client",
+    "version" : "0.1.0",
+    "description": "Ken's sandbox",
+    "authors" : [
+        "ken.zhang"
+    ],
+    "license" : "DanceButter Copyright",
+    "devDependencies" : {
+        "angular" : "~1.4.0",
+        "angular-ui-router": "~0.2.15",
+        "angular-bootstrap": "~0.13.0"
+    }
+}
