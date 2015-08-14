@@ -4,7 +4,7 @@ define(
     ],
     function( angular ){
 
-        return angular.module( 'nodeClient', []);
-        
+        return angular.module( 'nodeClient', [ 'ui.router' ]);
+
     }
 );

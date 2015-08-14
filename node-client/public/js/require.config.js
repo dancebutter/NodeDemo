@@ -12,7 +12,7 @@ require.config({
         'caman' : 'bower_components/caman/dist/caman',
 
         /* other */
-        'jquery' : 'bower_components/dist/jquery',
+        'jquery' : 'bower_components/jQuery/dist/jquery',
         'bootstrap' : 'bower_components/bootstrap/dist/bootstrap'
 
     },
