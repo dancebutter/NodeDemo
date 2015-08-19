@@ -2,7 +2,8 @@ define(
     [
         'angular',
         './app.module',
-        './app.config'
+        './app.config',
+        'jquery'
     ],
     function() {
 
