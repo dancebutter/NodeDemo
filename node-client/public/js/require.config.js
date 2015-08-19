@@ -1,14 +1,11 @@
 require.config({
-    baseUrl : '../js',
     'paths' : {
-        app : './app',
-
         /* open source */
 
         /* Angular */
         'angular' : 'bower_components/angular/angular',
         'angular-bootstrap' : 'bower_components/angular-bootstrap/ui-bootstrap-tpls',
-        'uiRouter' : 'bower_components/angular-ui-router/release/angular-ui-router',
+        'angular-ui-router' : 'bower_components/angular-ui-router/release/angular-ui-router',
 
         /* Image */
         'caman' : 'bower_components/caman/dist/caman',
@@ -40,5 +37,3 @@ require.config({
         }
     ]
 });
-
-requirejs(['app/main']);

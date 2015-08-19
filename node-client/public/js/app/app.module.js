@@ -1,10 +1,12 @@
 define(
     [
-        'angular'
+        'angular',
+        'angular-bootstrap',
+        'angular-ui-router'
     ],
-    function( angular ){
+    function( angular, angularBootstrap ){
 
-        return angular.module( 'nodeClient', [ 'uiRouter'] );
+        return angular.module( 'nodeClient', [ 'ui.bootstrap', 'ui.router' ] );
 
     }
 );

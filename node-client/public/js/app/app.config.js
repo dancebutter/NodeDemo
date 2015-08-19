@@ -4,7 +4,9 @@ define(
         './app.module'
     ],
     function( angular, nodeClient ) {
+
         NodeClientConfig.$inject = [ '$stateProvider', '$urlRouterProvider' ];
+        
         function NodeClientConfig( $stateProvider, $urlRouterProvider ) {
             $urlRouterProvider.otherwise('/home');
             $stateProvider

@@ -3,9 +3,11 @@ define(
         'angular',
         './app.module',
         './app.config',
-        'jquery'
+        './app.controller'
     ],
-    function() {
-
+    function( angular, app ) {
+        angular.element(document).ready( function() {
+            angular.bootstrap( document, ['nodeClient'] );
+        });
     }
 );
