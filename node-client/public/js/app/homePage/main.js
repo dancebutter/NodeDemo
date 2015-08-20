@@ -1,7 +1,7 @@
 define(
     [
         './homePage.module',
-        './directives/homePage.directive'
+        './directives/main'
     ],
     function() {
 

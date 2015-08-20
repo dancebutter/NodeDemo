@@ -1,0 +1,7 @@
+define(
+    [
+        './homePage.directive'
+    ],
+    function() {
+    }
+);

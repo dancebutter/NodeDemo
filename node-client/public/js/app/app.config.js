@@ -6,13 +6,13 @@ define(
     function( angular, nodeClient ) {
 
         NodeClientConfig.$inject = [ '$stateProvider', '$urlRouterProvider' ];
-        
+
         function NodeClientConfig( $stateProvider, $urlRouterProvider ) {
             $urlRouterProvider.otherwise('/home');
             $stateProvider
                 .state( 'home', {
                     url : '/home',
-                    template : 'Home'
+                    templateUrl : './js/app/homePage/views/homePage.container.tmpl.html'
                 })
                 .state( 'page1', {
                     url : '/page1',
