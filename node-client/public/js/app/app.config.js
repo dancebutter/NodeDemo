@@ -16,7 +16,7 @@ define(
                 })
                 .state( 'page1', {
                     url : '/page1',
-                    template : 'Page1'
+                    templateUrl : './js/app/imageProcessing/views/imageProcessing.container.tmpl.html'
                 });
         }
 

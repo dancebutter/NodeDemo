@@ -1,0 +1,8 @@
+define(
+    [
+        './imageProcessing.directive'
+    ],
+    function() {
+
+    }
+);

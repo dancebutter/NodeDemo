@@ -4,6 +4,7 @@ define(
         '../homePage.module'
     ],
     function( angular, homePageModule ) {
+        console.log("[DEBUG] Home Page Directive loading.");
 
         HomePageDirective.$inject = [ '$filter', '$document' ];
 
@@ -29,6 +30,8 @@ define(
             };
 
         }
+
+        console.log("[DEBUG] Home Page Directive loaded.");
 
         return homePageModule.directive( 'homePageDirective', HomePageDirective );
     }
