@@ -1,3 +1,9 @@
 <div class="col-md-12">
-    <h1>{{testStr}}</h1>
+    <div class="col-md-12" id="imgFileLoder">
+        <div class="col-md-6">
+            <h2>Load Your Image</h2>
+            <br>
+            <input type="file" name="file" onchange="angular.element(this).scope().imgLoad(this)">
+        </div>
+    </div>
 </div>
