@@ -8,13 +8,18 @@ require.config({
         'angular-ui-router' : 'bower_components/angular-ui-router/release/angular-ui-router',
 
         /* Image */
-        'caman' : 'bower_components/caman/dist/caman',
+        'caman' : 'bower_components/caman/dist/caman.full.min',
 
         /* other */
         'jquery' : 'bower_components/jQuery/dist/jquery',
         'bootstrap' : 'bower_components/bootstrap/dist/bootstrap'
 
     },
+	priority: [
+		'jquery',
+		'angular',
+		'bootstrap'
+	],
     'shim' : {
         'angular' : {
             deps : [ 'jquery' ],
@@ -27,7 +32,8 @@ require.config({
             deps : [ 'angular' ]
         },
         'bootstrap' : {
-            deps : [ 'jquery' ]
+            deps : [ 'jquery' ],
+			exports : '$.fn.modal'
         }
     },
     packages : [

@@ -49,6 +49,10 @@ define(
                     var imgElement = $document.find( '#imgViewer' );
                     //var imgElement = angular.element( document.querySelector( '#imgViewer' ) );
                     imgElement[0].src = theFile.target.result;
+                    var testElem = $('#imgViewer');
+                    Caman( '#imgViewer', function() {
+                        this.brightness(50).render();
+                    });
                 }
 
                 function uploadFailed( event ) {
