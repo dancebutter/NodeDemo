@@ -8,7 +8,7 @@ require.config({
         'angular-ui-router' : 'bower_components/angular-ui-router/release/angular-ui-router',
 
         /* Image */
-        'caman' : 'bower_components/caman/dist/caman.full.min',
+        'caman' : 'bower_components/caman/dist/caman.full',
 
         /* other */
         'jquery' : 'bower_components/jQuery/dist/jquery',

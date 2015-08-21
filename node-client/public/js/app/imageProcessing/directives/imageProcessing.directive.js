@@ -18,6 +18,8 @@ define(
             function ImageProcessingController( $scope, $log, $http, $document ) {
                 /* variable */
                 $scope.imgFile = null;
+                /* image para */
+                $scope.brightnessValue = 0;
 
                 /* functions */
                 $scope.imgLoad = imgLoad;
@@ -49,14 +51,41 @@ define(
                     var imgElement = $document.find( '#imgViewer' );
                     //var imgElement = angular.element( document.querySelector( '#imgViewer' ) );
                     imgElement[0].src = theFile.target.result;
-                    var testElem = $('#imgViewer');
+
                     Caman( '#imgViewer', function() {
-                        this.brightness(50).render();
+                        var camanObject = this;
+
+                        $scope.$watch( 'brightnessValue', function( newValue, oldValue ) {
+                            if( newValue && newValue !== oldValue ) {
+                                var value = parseInt(newValue);
+                                //setBrightness( value );
+                                camanObject.revert( function() {
+                                    camanObject.brightness(value).render();
+                                });
+                            }
+                        });
+
+                        // $scope.$watch( 'brightnessValue', _.debounce( function( brightnessValue ) {
+                        //     $scope.$apply(function() {
+                        //         var value = parseInt( brightnessValue );
+                        //         camanObject.revert( function() {
+                        //             camanObject.brightness(value).render();
+                        //         });
+                        //     })
+                        // }, 1000));
                     });
                 }
 
                 function uploadFailed( event ) {
                     console.log( event );
+                }
+
+                function setBrightness( value ) {
+                    if( angular.isNumber(value) ) {
+                        Caman( '#imgViewer', function() {
+                            this.brightness(value).render();
+                        });
+                    }
                 }
 
             }
