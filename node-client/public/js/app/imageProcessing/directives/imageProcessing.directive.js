@@ -14,8 +14,8 @@ define(
 
             }
 
-            ImageProcessingController.$inject = [ '$scope','$log', '$http' ];
-            function ImageProcessingController( $scope, $log, $http ) {
+            ImageProcessingController.$inject = [ '$scope','$log', '$http', '$document' ];
+            function ImageProcessingController( $scope, $log, $http, $document ) {
                 /* variable */
                 $scope.imgFile = null;
 
@@ -45,8 +45,10 @@ define(
                     reader.readAsDataURL( file );
                 }
 
-                function processImgData( event ) {
-                    console.log( event );
+                function processImgData( theFile ) {
+                    var imgElement = $document.find( '#imgViewer' );
+                    //var imgElement = angular.element( document.querySelector( '#imgViewer' ) );
+                    imgElement[0].src = theFile.target.result;
                 }
 
                 function uploadFailed( event ) {
