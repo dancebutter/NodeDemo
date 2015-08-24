@@ -16,10 +16,12 @@ define(
 
             ImageProcessingController.$inject = [ '$scope','$log', '$http', '$document' ];
             function ImageProcessingController( $scope, $log, $http, $document ) {
+                Caman.DEBUG = true
                 /* variable */
                 $scope.imgFile = null;
                 /* image para */
                 $scope.brightnessValue = 0;
+                $scope.contrastValue = 0;
 
                 /* functions */
                 $scope.imgLoad = imgLoad;
@@ -55,24 +57,22 @@ define(
                     Caman( '#imgViewer', function() {
                         var camanObject = this;
 
-                        $scope.$watch( 'brightnessValue', function( newValue, oldValue ) {
-                            if( newValue && newValue !== oldValue ) {
-                                var value = parseInt(newValue);
-                                //setBrightness( value );
-                                camanObject.revert( function() {
-                                    camanObject.brightness(value).render();
-                                });
-                            }
-                        });
+                        $scope.brightnessMouseup = function() {
+                            camanObject.revert( function() {
+                                camanObject.brightness($scope.brightnessValue);
+                                camanObject.contrast($scope.contrastValue);
+                                camanObject.render();
+                            });
+                        };
 
-                        // $scope.$watch( 'brightnessValue', _.debounce( function( brightnessValue ) {
-                        //     $scope.$apply(function() {
-                        //         var value = parseInt( brightnessValue );
-                        //         camanObject.revert( function() {
-                        //             camanObject.brightness(value).render();
-                        //         });
-                        //     })
-                        // }, 1000));
+                        $scope.contrastMouseup = function() {
+                            camanObject.revert( function() {
+                                camanObject.brightness($scope.brightnessValue);
+                                camanObject.contrast($scope.contrastValue);
+                                camanObject.render();
+                            });
+                        };
+
                     });
                 }
 

@@ -1,14 +1,43 @@
-<div class="col-md-12">
-    <div class="col-md-12" id="imgFileLoder">
+<div class="row">
+    <div class="row" id="imgFileLoder">
         <div class="col-md-6">
             <h2>Load Your Image</h2>
             <br>
             <input type="file" name="file" onchange="angular.element(this).scope().imgLoad(this)">
         </div>
     </div>
-    <div class="col-md-12">
+    <div class="row">
         <div class="col-md-6">
-            <input type="range" name="name" data-ng-model="brightnessValue" data-ng-model-options="{ debounce: 50 }" min=-100 max=100 step=1>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="brightness">Brightness</label>
+                </div>
+                <div class="col-md-4">
+                    <input  type="range"
+                            name="brightness"
+                            data-ng-model="brightnessValue"
+                            data-ng-mouseup="brightnessMouseup(brightnessValue)"
+                            min=-100 max=100 step=1>
+                </div>
+                <div class="col-md-4">
+                    <span>{{brightnessValue}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="contrast">Contrast</label>
+                </div>
+                <div class="col-md-4">
+                    <input  type="range"
+                            name="contrast"
+                            data-ng-model="contrastValue"
+                            data-ng-mouseup="contrastMouseup(contrastValue)"
+                            min=-100 max=100 step=1>
+                </div>
+                <div class="col-md-4">
+                    <span>{{contrastValue}}</span>
+                </div>
+            </div>
         </div>
         <div class="col-md-6">
             <img id="imgViewer"/>
