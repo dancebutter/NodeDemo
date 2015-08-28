@@ -43,4 +43,11 @@
             <img id="imgViewer"/>
         </div>
     </div>
+
+    <div class="row">
+        <input type="file" onchange="angular.element(this).scope().imgLoadCanvas(this)">
+    </div>
+    <div class="row">
+        <canvas id="imageProcessingCanvas"></canvas>
+    </div>
 </div>

@@ -19,12 +19,14 @@ define(
                 Caman.DEBUG = true;
                 /* variable */
                 $scope.imgFile = null;
+                $scope.canvasElement = document.getElementById('imageProcessingCanvas');
                 /* image para */
                 $scope.brightnessValue = 0;
                 $scope.contrastValue = 0;
 
                 /* functions */
                 $scope.imgLoad = imgLoad;
+                $scope.imgLoadCanvas = imgLoadCanvas;
 
                 function imgLoad( element ) {
                     if( element && element.files.length >=1 ) {
@@ -53,6 +55,7 @@ define(
                     var imgElement = $document.find( '#imgViewer' );
                     //var imgElement = angular.element( document.querySelector( '#imgViewer' ) );
                     imgElement[0].src = theFile.target.result;
+                    loadImgDataForCanvas( theFile.target.result );
 
                     Caman( '#imgViewer', function() {
                         var camanObject = this;
@@ -86,6 +89,22 @@ define(
                             this.brightness(value).render();
                         });
                     }
+                }
+
+                function imgLoadCanvas( element ) {
+                    if( element && element.files.length >=1 ) {
+                        var file = element.files[0];
+                        //loadImgDataForCanvas( file );
+                    } else {
+                        $log.error("[ERROR] Load image canvas failed, files length invaild: " + element.files.length );
+                    }
+                }
+
+                function loadImgDataForCanvas( data ) {
+                    var img = new Image();
+                    img.src = data;
+                    $scope.canvasElement.getContext('2d').drawImage( img, 0, 0 );
+                    debugger;
                 }
 
             }
