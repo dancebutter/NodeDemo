@@ -4,7 +4,8 @@ define(
         'angular-bootstrap',
         'angular-ui-router',
         './homePage/main',
-        './imageProcessing/main'
+        './imageProcessing/main',
+        './ideaCollection/main'
     ],
     function( angular, angularBootstrap ){
 
@@ -12,7 +13,8 @@ define(
                                                 'ui.bootstrap',
                                                 'ui.router',
                                                 'homePageModule',
-                                                'imageProcessingModule'
+                                                'imageProcessingModule',
+                                                'ideaCollectionModule'
                                             ] );
 
     }

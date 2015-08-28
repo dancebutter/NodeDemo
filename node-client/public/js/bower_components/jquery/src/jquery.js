@@ -5,6 +5,7 @@ define([
 	"./callbacks",
 	"./deferred",
 	"./core/ready",
+	"./support",
 	"./data",
 	"./queue",
 	"./queue/delay",
@@ -33,8 +34,5 @@ define([
 ], function( jQuery ) {
 
 return jQuery;
-
-});
- jQuery;
 
 });

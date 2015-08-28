@@ -16,7 +16,7 @@ define(
 
             ImageProcessingController.$inject = [ '$scope','$log', '$http', '$document' ];
             function ImageProcessingController( $scope, $log, $http, $document ) {
-                Caman.DEBUG = true
+                Caman.DEBUG = true;
                 /* variable */
                 $scope.imgFile = null;
                 /* image para */

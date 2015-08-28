@@ -17,6 +17,10 @@ define(
                 .state( 'page1', {
                     url : '/page1',
                     templateUrl : './js/app/imageProcessing/views/imageProcessing.container.tmpl.html'
+                })
+                .state( 'ideas', {
+                    url : '/ideas',
+                    templateUrl : './js/app/ideaCollection/views/ideaCollection.container.tmpl.html'
                 });
         }
 
