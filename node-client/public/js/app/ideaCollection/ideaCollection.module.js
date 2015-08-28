@@ -4,7 +4,8 @@ define(
     ],
     function( angular ) {
         return angular.module( 'ideaCollectionModule',  [
-                                                            'icDragableDivModule'
+                                                            'icDragableDivModule',
+                                                            'icColorfulBackgroundModule'
                                                         ]);
     }
 );
