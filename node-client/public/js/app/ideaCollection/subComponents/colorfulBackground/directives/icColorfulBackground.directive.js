@@ -14,35 +14,32 @@ define(
                 var cpR = 1;
                 var cpG = 1;
                 var cpB = 1;
+                var colorful;
 				element.css({
                     width: '400px',
                     height: '400px',
                     backgroundColor: 'rgb(' + scope.colorR + ',' + scope.colorG + ',' + scope.colorB + ')'
 				});
 
-                $interval( backgroundColorChange, 10 );
+                scope.startColorful = function() {
+                    colorful = $interval( backgroundColorChange, 30 );
+                };
+                scope.stopColorful = function() {
+                    $interval.cancel( colorful );
+                };
 
                 function backgroundColorChange() {
                     scope.colorR += cpR;
                     scope.colorG += cpG;
                     scope.colorB += cpB;
-                    if( scope.colorR >= 255 || scope.colorR <=0 ) {
+                    if( scope.colorR >= 255 || scope.colorR <=0 || Math.random() < 0.01 ) {
                         cpR = 0 - cpR;
                     }
-                    if( scope.colorG >= 255 || scope.colorG <=0 ) {
+                    if( scope.colorG >= 255 || scope.colorG <=0 || Math.random() < 0.01 ) {
                         cpG = 0 - cpG;
                     }
-                    if( scope.colorB >= 255 || scope.colorB <=0 ) {
+                    if( scope.colorB >= 255 || scope.colorB <=0 || Math.random() < 0.01 ) {
                         cpB = 0 - cpB;
-                    }
-                    if( Math.random() < 0.01 ) {
-                        cpR = 0 - cpR;
-                    }
-                    if( Math.random() < 0.01 ) {
-                        cpG = 0 - cpG;
-                    }
-                    if( Math.random() < 0.01 ) {
-                        cpR = 0 - cpR;
                     }
     				element.css({
                         backgroundColor: 'rgb(' + scope.colorR + ',' + scope.colorG + ',' + scope.colorB + ')'

@@ -2,7 +2,17 @@ NG_DOCS={
   "sections": {
     "api": "API Documentation"
   },
-  "pages": [],
+  "pages": [
+    {
+      "section": "api",
+      "id": "IcDragableDivDirective",
+      "shortName": "IcDragableDivDirective",
+      "type": "directive",
+      "moduleName": "IcDragableDivDirective",
+      "shortDescription": "Div component can be drag around the page.",
+      "keywords": "api component directive div drag icdragabledivdirective ken zhang"
+    }
+  ],
   "apis": {
     "api": true
   },

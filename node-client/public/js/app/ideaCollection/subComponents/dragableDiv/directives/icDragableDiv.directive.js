@@ -5,12 +5,19 @@ define(
     ],
     function( angular, icDragableDiv ) {
 
+        /**
+         * @ngdoc directive
+         * @name IcDragableDivDirective
+         * @author Ken Zhang
+         * @description
+         * Div component can be drag around the page.
+         */
         IcDragableDivDirective.$inject = [ '$filter', '$document' ];
         function IcDragableDivDirective( $filter, $document ) {
 
             IcDragableDivLink.$inject = [ 'scope', 'element', 'attr' ];
             function IcDragableDivLink( scope, element, attr ) {
-                var initTop = 0;
+                var initTop = 80;
                 var initLeft = 0;
 				var startX = 0;
                 var startY = 0;
