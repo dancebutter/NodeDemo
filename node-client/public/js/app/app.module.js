@@ -5,7 +5,8 @@ define(
         'angular-ui-router',
         './homePage/main',
         './imageProcessing/main',
-        './ideaCollection/main'
+        './ideaCollection/main',
+        './d3Playground/main'
     ],
     function( angular, angularBootstrap ){
 
@@ -14,7 +15,8 @@ define(
                                                 'ui.router',
                                                 'homePageModule',
                                                 'imageProcessingModule',
-                                                'ideaCollectionModule'
+                                                'ideaCollectionModule',
+                                                'd3PlaygroundModule'
                                             ] );
 
     }

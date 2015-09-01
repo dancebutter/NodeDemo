@@ -12,7 +12,8 @@ require.config({
 
         /* other */
         'jquery' : 'bower_components/jQuery/dist/jquery',
-        'bootstrap' : 'bower_components/bootstrap/dist/bootstrap'
+        'bootstrap' : 'bower_components/bootstrap/dist/bootstrap',
+        'd3' : 'bower_components/d3/d3'
 
     },
 	priority: [
@@ -34,6 +35,9 @@ require.config({
         'bootstrap' : {
             deps : [ 'jquery' ],
 			exports : '$.fn.modal'
+        },
+        'd3' : {
+            exports: 'd3'
         }
     },
     packages : [
