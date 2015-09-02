@@ -103,8 +103,13 @@ define(
                 function loadImgDataForCanvas( data ) {
                     var img = new Image();
                     img.src = data;
-                    $scope.canvasElement.getContext('2d').drawImage( img, 0, 0 );
-                    debugger;
+                    var imgWidth = img.width;
+                    var imgHeight = img.height;
+                    $scope.canvasElement.width = imgWidth;
+                    $scope.canvasElement.height = imgHeight;
+                    var ctx = $scope.canvasElement.getContext('2d');
+                    ctx.drawImage( img, 0, 0, imgWidth, imgHeight );
+                    var imageData = ctx.getImageData( 0, 0, imgWidth, imgHeight );
                 }
 
             }
