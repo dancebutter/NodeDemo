@@ -11,7 +11,7 @@ require.config({
         'caman' : 'bower_components/caman/dist/caman.full',
 
         /* other */
-        'jquery' : 'bower_components/jQuery/dist/jquery',
+        'jquery' : 'bower_components/jQuery/dist/jquery.min',
         'bootstrap' : 'bower_components/bootstrap/dist/bootstrap',
         'd3' : 'bower_components/d3/d3'
 

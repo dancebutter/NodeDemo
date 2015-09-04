@@ -27,6 +27,7 @@ define(
                 /* functions */
                 $scope.imgLoad = imgLoad;
                 $scope.imgLoadCanvas = imgLoadCanvas;
+                $scope.getGrayImage = getGrayImage;
 
                 function imgLoad( element ) {
                     if( element && element.files.length >=1 ) {
@@ -110,6 +111,19 @@ define(
                     var ctx = $scope.canvasElement.getContext('2d');
                     ctx.drawImage( img, 0, 0, imgWidth, imgHeight );
                     var imageData = ctx.getImageData( 0, 0, imgWidth, imgHeight );
+                }
+
+                function getGrayImage() {
+                    var ctx = $scope.canvasElement.getContext('2d');
+                    var imageData = ctx.getImageData( 0, 0, $scope.canvasElement.width, $scope.canvasElement.height );
+                    var data = imageData.data;
+                    for( var i = 0; i < data.length; i += 4 ) {
+                        var brightness = 0.33 * data[i] + 0.33 * data[i+1] + 0.33 * data[i+2];
+                        data[i] = brightness;
+                        data[i+1] = brightness;
+                        data[i+2] = brightness;
+                    }
+                    ctx.putImageData(imageData, 0, 0);
                 }
 
             }

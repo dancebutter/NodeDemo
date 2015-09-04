@@ -43,9 +43,12 @@
             <img id="imgViewer"/>
         </div>
     </div>
+    <hr>
 
     <div class="row">
         <input type="file" onchange="angular.element(this).scope().imgLoadCanvas(this)">
+        <br>
+        <button type="button" name="button" data-ng-click="getGrayImage()">ChangeGray</button>
     </div>
     <div class="row">
         <canvas id="imageProcessingCanvas"></canvas>
