@@ -1,3 +1,12 @@
 <div class="col-md-6">
     <h1>Drag Me</h1>
+    <input  type="range"
+            name="slider"
+            min=0
+            max=255
+            step=1
+            data-ng-model="sliderValue"
+            data-ng-model-options="{ debounce : 100 }"
+            data-ng-mousedown="$event.stopPropagation();">
+    <label for="slider">{{sliderPer}}%</label>
 </div>

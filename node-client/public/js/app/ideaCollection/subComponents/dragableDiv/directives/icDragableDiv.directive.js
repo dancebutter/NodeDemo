@@ -53,7 +53,11 @@ define(
 
             IcDragableDivController.$inject = [ '$scope' ];
             function IcDragableDivController( $scope ) {
-
+                $scope.sliderValue = 128;
+                $scope.sliderPer = 50;
+                $scope.$watch( 'sliderValue', function(newValue, oldValue) {
+                    $scope.sliderPer = parseInt ( ( $scope.sliderValue / 255 ) * 100 );
+                });
             }
 
             return {
