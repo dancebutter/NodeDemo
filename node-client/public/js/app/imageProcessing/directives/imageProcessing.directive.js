@@ -17,6 +17,11 @@ define(
             ImageProcessingController.$inject = [ '$scope','$log', '$http', '$document' ];
             function ImageProcessingController( $scope, $log, $http, $document ) {
                 Caman.DEBUG = true;
+                var PIXEL_MAX = 255;
+                var PIXEL_MIN = 0;
+                var R_ADJUST = 0.2126;
+                var G_ADJUST = 0.7152;
+                var B_ADJUST = 0.0722;
                 /* variable */
                 $scope.imgFile = null;
                 $scope.canvasElement = document.getElementById('imageProcessingCanvas');
@@ -131,17 +136,42 @@ define(
                     ctx.putImageData(imageData, 0, 0);
                 }
 
-                $scope.$watch('brightnessValue', setBrightness );
+                $scope.$watch( 'brightnessValue', setBrightness );
                 function setBrightness() {
-                    value = parseInt( $scope.brightnessValue );
+                    var value = parseInt( $scope.brightnessValue );
                     if( angular.isNumber( value ) && !isNaN( value ) ) {
                         var ctx = $scope.canvasElement.getContext('2d');
                         var imageData = ctx.getImageData( 0, 0, $scope.canvasElement.width, $scope.canvasElement.height );
                         var data = imageData.data;
                         for( var i = 0; i < data.length; i += 4 ) {
-                            data[i] = $scope.rawImageDataArray[i] + value >= 255 ? 255 : $scope.rawImageDataArray[i] + value ;
-                            data[i+1] = $scope.rawImageDataArray[i+1] + value >= 255 ? 255 : $scope.rawImageDataArray[i+1] + value ;
-                            data[i+2] = $scope.rawImageDataArray[i+2] + value >= 255 ? 255 : $scope.rawImageDataArray[i+2] + value ;
+                            var rChannel = $scope.rawImageDataArray[i] + value;
+                            data[i] = rChannel >= PIXEL_MAX ? PIXEL_MAX : rChannel <= PIXEL_MIN ? PIXEL_MIN : rChannel;
+                            var gChannel = $scope.rawImageDataArray[i+1] + value;
+                            data[i+1] = gChannel >= PIXEL_MAX ? PIXEL_MAX : gChannel <= PIXEL_MIN ? PIXEL_MIN : gChannel;
+                            var bChannel = $scope.rawImageDataArray[i+2] + value;
+                            data[i+2] = bChannel >= PIXEL_MAX ? PIXEL_MAX : bChannel <= PIXEL_MIN ? PIXEL_MIN : bChannel;
+                        }
+                        ctx.putImageData( imageData, 0, 0 );
+                    }
+                }
+
+                $scope.$watch( 'thresholdValue', setThreshold );
+                function setThreshold() {
+                    var value = parseInt( $scope.thresholdValue );
+                    if( angular.isNumber( value ) && !isNaN( value ) ) {
+                        var brightness = 0;
+                        if( angular.isNumber( parseInt( $scope.brightnessValue ) ) && !isNaN( parseInt( $scope.brightnessValue ) ) ) {
+                            brightness = parseInt( $scope.brightnessValue );
+                        }
+                        var ctx = $scope.canvasElement.getContext('2d');
+                        var imageData = ctx.getImageData( 0, 0, $scope.canvasElement.width, $scope.canvasElement.height );
+                        var data = imageData.data;
+                        for( var i = 0; i < data.length; i += 4 ) {
+                            var rChannel = $scope.rawImageDataArray[i];
+                            var gChannel = $scope.rawImageDataArray[i+1];
+                            var bChannel = $scope.rawImageDataArray[i+2];
+                            var pixelValue = ( R_ADJUST*rChannel + G_ADJUST*gChannel + B_ADJUST*bChannel + brightness >= value ) ? PIXEL_MAX : PIXEL_MIN;
+                            data[i] = data[i+1] = data[i+2] = pixelValue;
                         }
                         ctx.putImageData( imageData, 0, 0 );
                     }

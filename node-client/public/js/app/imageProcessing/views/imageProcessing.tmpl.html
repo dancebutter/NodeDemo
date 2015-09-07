@@ -50,12 +50,17 @@
         <br>
         <button type="button" name="button" data-ng-click="getGrayImage()">ChangeGray</button>
         <br>
-        <label for="brightness">{{brightnessValue}}</label>
+        <label for="brightness">Brightness : {{brightnessValue}}</label>
         <input  type="range"
                 name="brightness"
                 min=-255 max=255 step=1
                 data-ng-model="brightnessValue">
-                <!-- data-ng-mouseup="setBrightness()" -->
+        <br>
+        <label for="threshold">Threshold : {{thresholdValue}}</label>
+        <input  type="range"
+                name="threshold"
+                min=0 max=255 step=1
+                data-ng-model="thresholdValue">
     </div>
     <div class="row">
         <canvas id="imageProcessingCanvas"></canvas>
