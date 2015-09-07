@@ -21,13 +21,16 @@ define(
                 $scope.imgFile = null;
                 $scope.canvasElement = document.getElementById('imageProcessingCanvas');
                 /* image para */
-                $scope.brightnessValue = 0;
+                // $scope.brightnessValue = 0;
                 $scope.contrastValue = 0;
+                $scope.rawImageDataArray = null;
 
                 /* functions */
                 $scope.imgLoad = imgLoad;
                 $scope.imgLoadCanvas = imgLoadCanvas;
                 $scope.getGrayImage = getGrayImage;
+                $scope.setBrightness = setBrightness;
+
 
                 function imgLoad( element ) {
                     if( element && element.files.length >=1 ) {
@@ -84,13 +87,13 @@ define(
                     console.log( event );
                 }
 
-                function setBrightness( value ) {
-                    if( angular.isNumber(value) ) {
-                        Caman( '#imgViewer', function() {
-                            this.brightness(value).render();
-                        });
-                    }
-                }
+                // function setBrightness( value ) {
+                //     if( angular.isNumber(value) ) {
+                //         Caman( '#imgViewer', function() {
+                //             this.brightness(value).render();
+                //         });
+                //     }
+                // }
 
                 function imgLoadCanvas( element ) {
                     if( element && element.files.length >=1 ) {
@@ -108,9 +111,11 @@ define(
                     var imgHeight = img.height;
                     $scope.canvasElement.width = imgWidth;
                     $scope.canvasElement.height = imgHeight;
+                    // draw image
                     var ctx = $scope.canvasElement.getContext('2d');
                     ctx.drawImage( img, 0, 0, imgWidth, imgHeight );
                     var imageData = ctx.getImageData( 0, 0, imgWidth, imgHeight );
+                    $scope.rawImageDataArray = angular.copy( imageData.data );
                 }
 
                 function getGrayImage() {
@@ -124,6 +129,22 @@ define(
                         data[i+2] = brightness;
                     }
                     ctx.putImageData(imageData, 0, 0);
+                }
+
+                $scope.$watch('brightnessValue', setBrightness );
+                function setBrightness() {
+                    value = parseInt( $scope.brightnessValue );
+                    if( angular.isNumber( value ) && !isNaN( value ) ) {
+                        var ctx = $scope.canvasElement.getContext('2d');
+                        var imageData = ctx.getImageData( 0, 0, $scope.canvasElement.width, $scope.canvasElement.height );
+                        var data = imageData.data;
+                        for( var i = 0; i < data.length; i += 4 ) {
+                            data[i] = $scope.rawImageDataArray[i] + value >= 255 ? 255 : $scope.rawImageDataArray[i] + value ;
+                            data[i+1] = $scope.rawImageDataArray[i+1] + value >= 255 ? 255 : $scope.rawImageDataArray[i+1] + value ;
+                            data[i+2] = $scope.rawImageDataArray[i+2] + value >= 255 ? 255 : $scope.rawImageDataArray[i+2] + value ;
+                        }
+                        ctx.putImageData( imageData, 0, 0 );
+                    }
                 }
 
             }

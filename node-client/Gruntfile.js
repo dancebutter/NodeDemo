@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 		},
         serve : {
             options : {
-                port : 9010,
+                port : 8081,
                 serve : {
                     path : './public'
                 }

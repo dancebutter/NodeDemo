@@ -8,7 +8,7 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-4">
                     <label for="brightness">Brightness</label>
                 </div>
@@ -22,8 +22,8 @@
                 <div class="col-md-4">
                     <span>{{brightnessValue}}</span>
                 </div>
-            </div>
-            <div class="row">
+            </div> -->
+            <!-- <div class="row">
                 <div class="col-md-4">
                     <label for="contrast">Contrast</label>
                 </div>
@@ -37,7 +37,7 @@
                 <div class="col-md-4">
                     <span>{{contrastValue}}</span>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="col-md-6">
             <img id="imgViewer"/>
@@ -49,6 +49,13 @@
         <input type="file" onchange="angular.element(this).scope().imgLoadCanvas(this)">
         <br>
         <button type="button" name="button" data-ng-click="getGrayImage()">ChangeGray</button>
+        <br>
+        <label for="brightness">{{brightnessValue}}</label>
+        <input  type="range"
+                name="brightness"
+                min=-255 max=255 step=1
+                data-ng-model="brightnessValue">
+                <!-- data-ng-mouseup="setBrightness()" -->
     </div>
     <div class="row">
         <canvas id="imageProcessingCanvas"></canvas>
