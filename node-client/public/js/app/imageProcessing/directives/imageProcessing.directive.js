@@ -35,7 +35,8 @@ define(
                 $scope.imgLoadCanvas = imgLoadCanvas;
                 $scope.getGrayImage = getGrayImage;
                 $scope.setBrightness = setBrightness;
-
+                $scope.genarateBaseImage = genarateBaseImage;
+                $scope.addImageLayer = addImageLayer;
 
                 function imgLoad( element ) {
                     if( element && element.files.length >=1 ) {
@@ -175,6 +176,32 @@ define(
                         }
                         ctx.putImageData( imageData, 0, 0 );
                     }
+                }
+
+                function genarateBaseImage() {
+                    var baseCanvas = document.getElementById('baseImage');
+                    var ctx = baseCanvas.getContext('2d');
+                    ctx.strokeRect( 0, 0, 480, 640 );
+                    ctx.strokeRect( 100, 100, 280, 440 );
+                    ctx.strokeRect( 200, 200, 80, 240 );
+                }
+
+                function addImageLayer() {
+                    var container = document.getElementById('blendContainer');
+                    var cln = $scope.canvasElement.cloneNode(true);
+                    var ctx = cln.getContext('2d');
+
+                    var imageData = ctx.getImageData( 0, 0, cln.width, cln.height );
+                    var data = imageData.data;
+                    for( var i = 0; i < data.length; i += 4 ) {
+                        if( data[i] === 255 ) {
+                            data[i+3] = 0;
+                        }
+                    }
+                    ctx.putImageData( imageData, 0, 0 );
+                    cln.style.zIndex = 10;
+                    cln.style.position = 'absolute';
+                    container.appendChild( cln );
                 }
 
             }

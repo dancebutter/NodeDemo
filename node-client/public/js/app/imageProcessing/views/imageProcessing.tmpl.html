@@ -65,4 +65,18 @@
     <div class="row">
         <canvas id="imageProcessingCanvas"></canvas>
     </div>
+    <div class="row">
+        <button type="button"
+                name="button"
+                data-ng-click="genarateBaseImage();">Get Base Image</button>
+        <button type="button"
+                name="button"
+                data-ng-click="addImageLayer();">Add Layer</button>
+    </div>
+    <div class="row" id="blendContainer">
+        <canvas id="baseImage"
+                width="480"
+                height="640"
+                style="position:absolute;"></canvas>
+    </div>
 </div>
