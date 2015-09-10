@@ -206,6 +206,11 @@ define(
                     cln.style.zIndex = 10;
                     cln.style.position = 'absolute';
                     container.appendChild( cln );
+
+                    $scope.markTop = 0;
+                    $scope.markLeft = 0;
+                    $scope.markWidth = $scope.canvasElement.width;
+                    $scope.markHeight = $scope.canvasElement.height;
                 }
 
                 function selectCatalog( catalogName ) {
@@ -224,8 +229,8 @@ define(
                     var height = parseInt($scope.markHeight);
                     $scope.canvasElement.style.top = top;
                     $scope.canvasElement.style.left = left;
-                    $scope.canvasElement.width = width;
-                    $scope.canvasElement.height = height;
+                    $scope.canvasElement.style.width = width;
+                    $scope.canvasElement.style.height = height;
                 }
 
                 function _init() {
