@@ -218,10 +218,14 @@ define(
                 $scope.$watch( 'markWidth', setMarkPosition );
                 $scope.$watch( 'markHeight', setMarkPosition );
                 function setMarkPosition() {
-                    $scope.canvasElement.style.top = $scope.markTop;
-                    $scope.canvasElement.style.left = $scope.markLeft;
-                    $scope.canvasElement.width = $scope.markWidth;
-                    $scope.canvasElement.height = $scope.markHeight;
+                    var top = parseInt($scope.markTop);
+                    var left = parseInt($scope.markLeft);
+                    var width = parseInt($scope.markWidth);
+                    var height = parseInt($scope.markHeight);
+                    $scope.canvasElement.style.top = top;
+                    $scope.canvasElement.style.left = left;
+                    $scope.canvasElement.width = width;
+                    $scope.canvasElement.height = height;
                 }
 
                 function _init() {
