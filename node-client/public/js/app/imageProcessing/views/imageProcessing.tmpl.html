@@ -66,6 +66,16 @@
         <canvas id="imageProcessingCanvas"></canvas>
     </div>
     <div class="row">
+        <div class="col-md-4" data-ng-repeat="( name, catalog ) in catalogs">
+            <img    data-ng-src="{{catalog.path}}"
+                    data-ng-attr-id="{{name}}"/>
+            <input type="radio"
+                    name="catalog"
+                    data-ng-model="$parent.selected"
+                    data-ng-click="selectCatalog(name)"/>
+        </div>
+    </div>
+    <div class="row">
         <button type="button"
                 name="button"
                 data-ng-click="genarateBaseImage();">Get Base Image</button>
@@ -73,10 +83,38 @@
                 name="button"
                 data-ng-click="addImageLayer();">Add Layer</button>
     </div>
-    <div class="row" id="blendContainer">
-        <canvas id="baseImage"
-                width="480"
-                height="640"
-                style="position:absolute;"></canvas>
+    <div class="row">
+        <div class="col-md-8" id="blendContainer">
+            <canvas id="baseImage"
+                    width="480"
+                    height="640"
+                    style="position:absolute;"></canvas>
+        </div>
+        <div class="col-md-4">
+            <input  type="range"
+                    name="name"
+                    min=1
+                    max=1000
+                    step=1
+                    data-ng-model="markTop">
+            <input  type="range"
+                    name="name"
+                    min=1
+                    max=1000
+                    step=1
+                    data-ng-model="markLeft">
+            <input  type="range"
+                    name="name"
+                    min=1
+                    max=1000
+                    step=1
+                    data-ng-model="markWidth">
+            <input  type="range"
+                    name="name"
+                    min=1
+                    max=1000
+                    step=1
+                    data-ng-model="markHeight">
+        </div>
     </div>
 </div>

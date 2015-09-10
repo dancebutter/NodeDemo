@@ -37,6 +37,7 @@ define(
                 $scope.setBrightness = setBrightness;
                 $scope.genarateBaseImage = genarateBaseImage;
                 $scope.addImageLayer = addImageLayer;
+                $scope.selectCatalog = selectCatalog;
 
                 function imgLoad( element ) {
                     if( element && element.files.length >=1 ) {
@@ -178,17 +179,20 @@ define(
                     }
                 }
 
-                function genarateBaseImage() {
+                function genarateBaseImage( img ) {
                     var baseCanvas = document.getElementById('baseImage');
                     var ctx = baseCanvas.getContext('2d');
-                    ctx.strokeRect( 0, 0, 480, 640 );
-                    ctx.strokeRect( 100, 100, 280, 440 );
-                    ctx.strokeRect( 200, 200, 80, 240 );
+                    ctx.clearRect(0, 0, baseCanvas.width, baseCanvas.height);
+                    ctx.drawImage( img, 0, 0, img.width, img.height );
+                    // ctx.strokeRect( 0, 0, 480, 640 );
+                    // ctx.strokeRect( 100, 100, 280, 440 );
+                    // ctx.strokeRect( 200, 200, 80, 240 );
                 }
 
                 function addImageLayer() {
                     var container = document.getElementById('blendContainer');
-                    var cln = $scope.canvasElement.cloneNode(true);
+                    // var cln = $scope.canvasElement.cloneNode(true);
+                    var cln = $scope.canvasElement;
                     var ctx = cln.getContext('2d');
 
                     var imageData = ctx.getImageData( 0, 0, cln.width, cln.height );
@@ -203,6 +207,42 @@ define(
                     cln.style.position = 'absolute';
                     container.appendChild( cln );
                 }
+
+                function selectCatalog( catalogName ) {
+                    var img = document.getElementById( catalogName );
+                    genarateBaseImage( img );
+                }
+
+                $scope.$watch( 'markTop', setMarkPosition );
+                $scope.$watch( 'markLeft', setMarkPosition );
+                $scope.$watch( 'markWidth', setMarkPosition );
+                $scope.$watch( 'markHeight', setMarkPosition );
+                function setMarkPosition() {
+                    $scope.canvasElement.style.top = $scope.markTop;
+                    $scope.canvasElement.style.left = $scope.markLeft;
+                    $scope.canvasElement.width = $scope.markWidth;
+                    $scope.canvasElement.height = $scope.markHeight;
+                }
+
+                function _init() {
+                    var catalog = './js/app/imageProcessing/data/catalog.json';
+                    $scope.catalogs = {};
+                    $http.get( catalog )
+                    .success(function(data) {
+                        angular.forEach( data, function( path, name ) {
+                            var temp = {
+                                path : path,
+                                selected : false
+                            };
+                            $scope.catalogs[name] = temp;
+                        });
+                    })
+                    .error(function(e) {
+                        $log.error("[ERROR] Get catalog failed. : " + e );
+                    });
+                }
+
+                _init();
 
             }
 
