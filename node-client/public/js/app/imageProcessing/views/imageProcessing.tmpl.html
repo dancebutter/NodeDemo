@@ -40,35 +40,38 @@
             </div> -->
         </div>
         <div class="col-md-6">
-            <img id="imgViewer"/>
+            <img data-ng-hide="true" id="imgViewer"/>
         </div>
     </div>
     <hr>
 
     <div class="row">
-        <input type="file" onchange="angular.element(this).scope().imgLoadCanvas(this)">
+        <!-- <input type="file" onchange="angular.element(this).scope().imgLoadCanvas(this)">
         <br>
-        <button type="button" name="button" data-ng-click="getGrayImage()">ChangeGray</button>
-        <br>
-        <label for="brightness">Brightness : {{brightnessValue}}</label>
-        <input  type="range"
-                name="brightness"
-                min=-255 max=255 step=1
-                data-ng-model="brightnessValue">
-        <br>
-        <label for="threshold">Threshold : {{thresholdValue}}</label>
-        <input  type="range"
-                name="threshold"
-                min=0 max=255 step=1
-                data-ng-model="thresholdValue">
-    </div>
-    <div class="row">
-        <canvas id="imageProcessingCanvas"></canvas>
+        <button type="button" name="button" data-ng-click="getGrayImage()">ChangeGray</button> -->
+        <!-- <br> -->
+        <div class="col-md-6">
+            <canvas id="imageProcessingCanvas"></canvas>
+        </div>
+        <div class="col-md-6">
+            <label for="brightness">Brightness : {{brightnessValue}}</label>
+            <input  type="range"
+                    name="brightness"
+                    min=-255 max=255 step=1
+                    data-ng-model="brightnessValue">
+            <br>
+            <label for="threshold">Threshold : {{thresholdValue}}</label>
+            <input  type="range"
+                    name="threshold"
+                    min=0 max=255 step=1
+                    data-ng-model="thresholdValue">
+        </div>
     </div>
     <hr><hr>
     <div class="row">
         <div class="col-md-4" data-ng-repeat="( name, catalog ) in catalogs">
-            <img    data-ng-src="{{catalog.path}}"
+            <img    class="img-thumbnail"
+                    data-ng-src="{{catalog.path}}"
                     data-ng-attr-id="{{name}}"
                     data-ng-click="selectCatalog(name)"/>
             <!-- <input  type="radio"
@@ -78,11 +81,13 @@
         </div>
     </div>
     <div class="row">
+        <!-- <button type="button"
+                name="button"
+                class="btn btn-default"
+                data-ng-click="genarateBaseImage();">Get Base Image</button> -->
         <button type="button"
                 name="button"
-                data-ng-click="genarateBaseImage();">Get Base Image</button>
-        <button type="button"
-                name="button"
+                class="btn btn-primary"
                 data-ng-click="addImageLayer();">Add Layer</button>
     </div>
     <div class="row">
@@ -99,24 +104,44 @@
                     max=1000
                     step=1
                     data-ng-model="markTop">{{markTop}}
+            <input  type="number"
+                    name="name"
+                    min=1
+                    max=1000
+                    data-ng-model="markTop">
             <input  type="range"
                     name="name"
                     min=1
                     max=1000
                     step=1
                     data-ng-model="markLeft">{{markLeft}}
+            <input  type="number"
+                    name="name"
+                    min=1
+                    max=1000
+                    ng-model="markLeft">
             <input  type="range"
                     name="name"
                     min=1
                     max=1000
                     step=1
                     data-ng-model="markWidth">{{markWidth}}
+            <input  type="number"
+                    name="name"
+                    min=1
+                    max=1000
+                    data-ng-model="markWidth">
             <input  type="range"
                     name="name"
                     min=1
                     max=1000
                     step=1
                     data-ng-model="markHeight">{{markHeight}}
+            <input  type="number"
+                    name="name"
+                    min=1
+                    max=1000
+                    data-ng-model="markHeight">
         </div>
     </div>
 </div>
