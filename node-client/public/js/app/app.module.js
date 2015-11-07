@@ -6,7 +6,8 @@ define(
         './homePage/main',
         './imageProcessing/main',
         './ideaCollection/main',
-        './d3Playground/main'
+        './d3Playground/main',
+        './lol/main'
     ],
     function( angular, angularBootstrap ){
 
@@ -16,7 +17,8 @@ define(
                                                 'homePageModule',
                                                 'imageProcessingModule',
                                                 'ideaCollectionModule',
-                                                'd3PlaygroundModule'
+                                                'd3PlaygroundModule',
+                                                'lolModule'
                                             ] );
 
     }

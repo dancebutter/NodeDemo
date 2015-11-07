@@ -25,6 +25,10 @@ define(
                 .state( 'd3Playground', {
                     url : '/d3Playground',
                     templateUrl : './js/app/d3Playground/views/d3Playground.container.tmpl.html'
+                })
+                .state( 'lol', {
+                    url : '/lol',
+                    templateUrl : './js/app/lol/views/lol.container.tmpl.html'
                 });
         }
 
