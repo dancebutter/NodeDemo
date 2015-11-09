@@ -9,7 +9,16 @@ define(
         './d3Playground/main',
         './lol/main'
     ],
-    function( angular, angularBootstrap ){
+    function(
+        angular,
+        angularBootstrap,
+        angularUiRouter,
+        homePageModule,
+        imageProcessingModule,
+        ideaCollectionModule,
+        d3PlaygroundModule,
+        lolModule
+    ){
 
         return angular.module( 'nodeClient', [
                                                 'ui.bootstrap',

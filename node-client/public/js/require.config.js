@@ -6,6 +6,8 @@ require.config({
         'angular' : 'bower_components/angular/angular',
         'angular-bootstrap' : 'bower_components/angular-bootstrap/ui-bootstrap-tpls',
         'angular-ui-router' : 'bower_components/angular-ui-router/release/angular-ui-router',
+        // 'angular-ui-grid'   : 'bower_components/angular-ui-grid/ui-grid',
+        'ng-grid'   : 'bower_components/ng-grid/ng-grid-2.0.14.debug',
 
         /* Image */
         'caman' : 'bower_components/caman/dist/caman.full',
@@ -32,6 +34,10 @@ require.config({
         'angular-bootstrap' : {
             deps : [ 'angular' ]
         },
+        'ng-grid' : {
+            deps : [ 'angular', 'jquery' ],
+            exports : 'ngGrid'
+        },
         'bootstrap' : {
             deps : [ 'jquery' ],
 			exports : '$.fn.modal'
@@ -47,3 +53,7 @@ require.config({
         }
     ]
 });
+require.config({
+    baseUrl: 'js'
+});
+require(['appPackage', 'caman']);

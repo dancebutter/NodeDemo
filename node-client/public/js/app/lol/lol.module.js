@@ -1,10 +1,12 @@
 define(
     [
-        'angular'
+        'angular',
+        'ng-grid'
     ],
     function(
-        angular
+        angular,
+        ngGrid
     ) {
-        return angular.module( 'lolModule', [ 'ui.bootstrap' ] );
+        return angular.module( 'lolModule', [ 'ui.bootstrap', 'ngGrid' ] );
     }
 );

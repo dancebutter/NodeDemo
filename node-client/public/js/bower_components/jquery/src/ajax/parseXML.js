@@ -26,12 +26,3 @@ jQuery.parseXML = function( data ) {
 return jQuery.parseXML;
 
 });
-l.documentElement || xml.getElementsByTagName( "parsererror" ).length ) {
-		jQuery.error( "Invalid XML: " + data );
-	}
-	return xml;
-};
-
-return jQuery.parseXML;
-
-});
